@@ -1,0 +1,21 @@
+<template>
+  <lightning-card title="Getter Demo">
+    <div class="slds-m-around_medium">
+      <lightning-button variant="brand" label="Show Data" title="Show Data" onclick={handleClick}
+        class="slds-m-left_x-small"></lightning-button>
+      <template if:true={isVisible}>
+        <div>Welcome to Zero to Hero Course</div>
+      </template>
+      <template if:false={isVisible}>
+        <div>False Check, you can't see the data</div>
+      </template>
+      <lightning-input type="text" label="'Type hello to see the data" onkeyup={changeHandler}></lightning-input>
+      <template lwc:if={helloMethod}>
+        <div>Hurray!, you have typed correctly</div>
+      </template>
+      <template lwc:else>
+        <div>You have entered the wrong data</div>
+      </template>
+    </div>
+  </lightning-card>
+</template>

@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Quiz App in LWC">
+        <div class="slds-m-around_medium">
+            <template if:true={isSubmitted}>
+                <div class={isScoredFull}>You have scored {correctAnswer} out of {myQuestions.length}</div>
+            </template>
+            <form>
+                <template for:each={myQuestions} for:item="quiz">
+                    <div key={quiz.id} class="slds-m-around_medium">
+                        <div><strong>{quiz.id}:</strong> {quiz.question}?</div>
+                        <div class="slds-grid slds-gutters slds-p-around_bottom">
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="a" onchange={changeHandler} />
+                                {quiz.answers.a}
+                            </div>
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="b" onchange={changeHandler} />
+                                {quiz.answers.b}
+                            </div>
+                            <div class="slds-col">
+                                <input type="radio" name={quiz.id} value="c" onchange={changeHandler} />
+                                {quiz.answers.c}
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                <lightning-button variant="brand" type="submit" label="Submit" class="slds-m-around_small"
+                    title="Submit Quiz" onclick={submitHandler} disabled={allNotSelected}></lightning-button>
+                <lightning-button variant="brand" type="reset" label="Reset" class="slds-m-around_small"
+                    title="Reset Quiz" onclick={resetHandler}></lightning-button>
+            </form>
+        </div>
+    </lightning-card>
+</template>
